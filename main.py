@@ -1,67 +1,109 @@
-#importing needed modules
+#needed modules
 import os
 import sys
 import time
+from datetime import datetime
 
-#welcome the user
-print("Welcome to your tasks manager!")
+# Constants
+TASK_FILE = "tasks.txt"
+tasks = []
 
-#make a while loop to keep the program running until the user decides to exit
-while True:
-    #make a tasks library
-    tasks = []
+# Load tasks from file
+def load_tasks():
+    if os.path.exists(TASK_FILE):
+        with open(TASK_FILE, "r") as file:
+            for line in file:
+                if line.strip():
+                    timestamp, task = line.strip().split(" | ", 1)
+                    tasks.append({"task": task, "timestamp": timestamp})
 
-    # TaskFile = "tasks.txt"
-    # if os.path.exists(TaskFile):
-    #     with open(TaskFile, "r") as file:
+# Save tasks to file
+def save_tasks():
+    with open(TASK_FILE, "w") as file:
+        for task in tasks:
+            file.write(f"{task['timestamp']} | {task['task']}\n")
 
-    #display the menu options
-    print("\nMenu:\n")
-    print("1. To add a task : add")
-    print("2. To view tasks : view")
-    print("3. To delete a task : delete")
-    print("4. To exit : exit")
-
-    #get the user's choice
-    menuChoice = input("\nWhat would you like to do? ").strip().lower()
-
-    #allow the user to add a task 
-    if menuChoice == "add":
-        #get the task from the user
-        addTask = input("\nEnter the task you want to add: ")
-        #add the task to the tasks library
-        print(f"\nTask '{addTask}'added successfully!\n")
-        tasks.append(addTask)
-    
-    #show tasks available for the user
-    elif menuChoice == "view":
-        #check if there are any tasks
-        if not tasks:
-            print("\nNo tasks available to view.")
-        else:
-            print("\nYour tasks:")
-            tasks.sort()
-            for index, task in enumerate(tasks, start=1):
-                print(f"{index}. {task}")
-
-    #Allowing the user to remove tasks in the library
-    elif menuChoice == "delete":
-        #check if there are any tasks
-        if not tasks:
-            print("\nNo tasks available to delete.")
-        else:
-            removeTask = input("\nWhat task would you like to remove: ")
-            #remove users choice
-            print(removeTask, "was removed successfully.")
-            tasks.remove(removeTask)
-
-    #quit the program but save the list
-    elif menuChoice == "exit":
-        os.system('cls||clear')
-        print("Exiting the program")
-        time.sleep(2)
-        sys.exit()
-        
-    #show error masage in user types something else
+# Add a task
+def add_task():
+    task_text = input("\nEnter the task you want to add: ").strip()
+    if task_text:
+        timestamp = datetime.now().strftime("%Y-%m-%d , %H:%M")
+        tasks.append({"task": task_text, "timestamp": timestamp})
+        print(f"\n Task '{task_text}' added successfully!\n")
     else:
-        print("Sorry, You Have to type on of the choices\n")  
+        print(" Task cannot be empty.")
+
+# View tasks
+def view_tasks():
+    if not tasks:
+        print("\n No tasks available.")
+    else:
+        print("\n Your tasks:")
+        sorted_tasks = sorted(tasks, key=lambda x: x["timestamp"])
+        for index, task in enumerate(sorted_tasks, start=1):
+            print(f"{index}. {task['task']} (added: {task['timestamp']})")
+
+# Delete a task
+def delete_task():
+    if not tasks:
+        print("\n No tasks to delete.")
+        return
+
+    print("\n Tasks:")
+    for index, task in enumerate(tasks, start=1):
+        print(f"{index}. {task['task']} (added: {task['timestamp']})")
+
+    try:
+        index = int(input("\nEnter the number of the task to delete: ")) - 1
+        if 0 <= index < len(tasks):
+            removed = tasks.pop(index)
+            print(f"\n Task '{removed['task']}' removed successfully!\n")
+        else:
+            print(" Invalid task number.")
+    except ValueError:
+        print(" Please enter a valid number.")
+
+# Main loop
+#this is what the user will see when they run the program
+def main():
+    print(" Welcome to your Task Manager!")
+    load_tasks()
+
+    while True:
+        print("\n Menu:")
+        print("1. Add a task     → add")
+        print("2. View tasks     → view")
+        print("3. Delete a task  → delete")
+        print("4. Exit           → exit")
+
+        choice = input("\nWhat would you like to do? ").strip().lower()
+        # Handle user choice
+
+        #add task
+        if choice == "add":
+            add_task()
+            save_tasks
+
+        #view tasks
+        elif choice == "view":
+            view_tasks()
+
+        #remove task
+        elif choice == "delete":
+            delete_task()
+            save_tasks()
+
+        #exit program
+        elif choice == "exit":
+            save_tasks()
+            print("\n Saving tasks...")
+            time.sleep(1)
+            print(" Goodbye!")
+            sys.exit()
+
+        #invalid input
+        else:
+            print(" Invalid choice. Please type: add, view, delete, or exit.")
+# Run the main function
+if __name__ == "__main__":
+    main()
