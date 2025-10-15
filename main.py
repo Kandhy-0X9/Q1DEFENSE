@@ -10,6 +10,11 @@ print("Welcome to your tasks manager!")
 while True:
     #make a tasks library
     tasks = []
+
+    # TaskFile = "tasks.txt"
+    # if os.path.exists(TaskFile):
+    #     with open(TaskFile, "r") as file:
+
     #display the menu options
     print("\nMenu:\n")
     print("1. To add a task : add")
