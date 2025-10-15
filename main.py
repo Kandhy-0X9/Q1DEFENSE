@@ -30,6 +30,7 @@ def add_task():
         timestamp = datetime.now().strftime("%Y-%m-%d , %H:%M")
         tasks.append({"task": task_text, "timestamp": timestamp})
         print(f"\n Task '{task_text}' added successfully!\n")
+        save_tasks()
     else:
         print(" Task cannot be empty.")
 
@@ -82,7 +83,7 @@ def main():
         #add task
         if choice == "add":
             add_task()
-            save_tasks
+           
 
         #view tasks
         elif choice == "view":
@@ -91,7 +92,7 @@ def main():
         #remove task
         elif choice == "delete":
             delete_task()
-            save_tasks()
+            
 
         #exit program
         elif choice == "exit":
