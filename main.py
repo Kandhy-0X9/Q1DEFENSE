@@ -68,27 +68,17 @@ def delete_task():
 
 
 #make a clock
-def clock_system():
-    #Displays the current time, updating every second."""
-    try:
-        while True:
-            # Get the current time
-            now = datetime.datetime.now()
-            
-            # Format the time as HH:MM:SS
-            current_time_str = now.strftime("%H:%M:%S")
-            
-            # Clear the console (for a cleaner display)
-            # 'cls' for Windows, 'clear' for Unix-like systems
-            os.system('cls' if os.name == 'nt' else 'clear')
-            
-            # Print the formatted time
-            print(f"Current Time: {current_time_str}")
-            
-            # Wait for 1 second before updating again
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nTime display stopped.")
+# def clockTickin():
+#     while True:
+#         # Get the current time and format it
+#         now = datetime.now()
+#         currentTime = now.strftime("%H:%M:%S")
+
+#         # Print the time, overwriting the previous line
+#         print(currentTime, end='\r', flush=True)
+        
+#         # Pause for one second
+#         time.sleep(1)
 
 
 ##################################################################################################
@@ -99,11 +89,12 @@ def main():
     load_tasks()
 
     while True:
-        print("\n Menu:")
+        print("\n Menu:\n")
         print("1. Add a task     → add")
         print("2. View tasks     → view")
         print("3. Delete a task  → delete")
         print("4. Exit           → exit")
+        print("4. Show Time      → time")
 
         choice = input("\nWhat would you like to do? ").strip().lower()
         # Handle user choice
@@ -126,8 +117,13 @@ def main():
             print("\n Saving tasks...")
             time.sleep(1)
             print(" Goodbye!")
-           
-            # clock_system()
+            sys.exit()
+
+        #Show the time
+        # elif choice == "time":
+        #     clockTickin()
+        #     continue
+
         #invalid input
         else:
             print(" Invalid choice. Please type: add, view, delete, or exit.")
