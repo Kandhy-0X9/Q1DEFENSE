@@ -2,7 +2,7 @@ import datetime
 import time
 import os
 
-def display_current_time_counting():
+def clock_system():
     """Displays the current time, updating every second."""
     try:
         while True:
@@ -25,4 +25,4 @@ def display_current_time_counting():
         print("\nTime display stopped.")
 
 if __name__ == "__main__":
-    display_current_time_counting()
+    clock_system()

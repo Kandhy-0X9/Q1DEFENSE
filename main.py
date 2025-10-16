@@ -2,6 +2,7 @@
 import os
 import sys
 import time
+import datetime
 from datetime import datetime
 
 # Constants
@@ -64,6 +65,32 @@ def delete_task():
             print(" Invalid task number.")
     except ValueError:
         print(" Please enter a valid number.")
+
+
+#make a clock
+def clock_system():
+    #Displays the current time, updating every second."""
+    try:
+        while True:
+            # Get the current time
+            now = datetime.datetime.now()
+            
+            # Format the time as HH:MM:SS
+            current_time_str = now.strftime("%H:%M:%S")
+            
+            # Clear the console (for a cleaner display)
+            # 'cls' for Windows, 'clear' for Unix-like systems
+            os.system('cls' if os.name == 'nt' else 'clear')
+            
+            # Print the formatted time
+            print(f"Current Time: {current_time_str}")
+            
+            # Wait for 1 second before updating again
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nTime display stopped.")
+
+
 ##################################################################################################
 # Main loop
 #this is what the user will see when they run the program
@@ -99,8 +126,8 @@ def main():
             print("\n Saving tasks...")
             time.sleep(1)
             print(" Goodbye!")
-            sys.exit()
-
+           
+            # clock_system()
         #invalid input
         else:
             print(" Invalid choice. Please type: add, view, delete, or exit.")
