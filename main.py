@@ -4,6 +4,7 @@ import sys
 import time
 import datetime
 from datetime import datetime
+import msvcrt 
 
 # Constants
 TASK_FILE = "tasks.txt"
@@ -68,17 +69,22 @@ def delete_task():
 
 
 #make a clock
-# def clockTickin():
-#     while True:
-#         # Get the current time and format it
-#         now = datetime.now()
-#         currentTime = now.strftime("%H:%M:%S")
 
-#         # Print the time, overwriting the previous line
-#         print(currentTime, end='\r', flush=True)
-        
-#         # Pause for one second
-#         time.sleep(1)
+def show_time():
+    print("\nLive Clock — press any key to stop:\n")
+    while True:
+        now = datetime.now()
+        current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+        print(f"Current Time: {current_time}", end='\r', flush=True)
+        time.sleep(1)
+
+        # Stop if any key is pressed
+        if msvcrt.kbhit():
+            msvcrt.getch()  # Read the key (doesn't matter which one)
+            print("\nClock stopped. Returning to menu...\n")
+            break
+
+
 
 
 ##################################################################################################
@@ -110,6 +116,10 @@ def main():
         #remove task
         elif choice == "delete":
             delete_task()
+
+        #show time
+        elif choice == "time":
+            show_time()
             
         #exit program
         elif choice == "exit":
@@ -118,11 +128,6 @@ def main():
             time.sleep(1)
             print(" Goodbye!")
             sys.exit()
-
-        #Show the time
-        # elif choice == "time":
-        #     clockTickin()
-        #     continue
 
         #invalid input
         else:
