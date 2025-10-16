@@ -55,10 +55,11 @@ def delete_task():
         print(f"{index}. {task['task']} (added: {task['timestamp']})")
 
     try:
-        index = int(input("\nEnter the number of the task to delete: ")) - 1
-        if 0 <= index < len(tasks):
-            removed = tasks.pop(index)
+        task_number = int(input("\nEnter the number of the task to delete: ")) - 1
+        if 0 <= task_number < len(tasks):
+            removed = tasks.pop(task_number)
             print(f"\n Task '{removed['task']}' removed successfully!\n")
+            save_tasks()
         else:
             print(" Invalid task number.")
     except ValueError:
