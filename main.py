@@ -64,7 +64,7 @@ def delete_task():
             print(" Invalid task number.")
     except ValueError:
         print(" Please enter a valid number.")
-
+##################################################################################################
 # Main loop
 #this is what the user will see when they run the program
 def main():
@@ -85,7 +85,6 @@ def main():
         if choice == "add":
             add_task()
            
-
         #view tasks
         elif choice == "view":
             view_tasks()
@@ -94,7 +93,6 @@ def main():
         elif choice == "delete":
             delete_task()
             
-
         #exit program
         elif choice == "exit":
             save_tasks()
