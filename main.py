@@ -68,25 +68,6 @@ def delete_task():
         print(" Please enter a valid number.")
 
 
-#make a clock
-
-def show_time():
-    print("\nLive Clock — press any key to stop:\n")
-    while True:
-        now = datetime.now()
-        current_time = now.strftime("%Y-%m-%d %H:%M:%S")
-        print(f"Current Time: {current_time}", end='\r', flush=True)
-        time.sleep(1)
-
-        # Stop if any key is pressed
-        if msvcrt.kbhit():
-            msvcrt.getch()  # Read the key (doesn't matter which one)
-            print("\nClock stopped. Returning to menu...\n")
-            break
-
-
-
-
 ##################################################################################################
 # Main loop
 #this is what the user will see when they run the program
@@ -116,10 +97,6 @@ def main():
         #remove task
         elif choice == "delete":
             delete_task()
-
-        #show time
-        elif choice == "time":
-            show_time()
             
         #exit program
         elif choice == "exit":
