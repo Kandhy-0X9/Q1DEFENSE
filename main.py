@@ -3,8 +3,7 @@ import os
 import sys
 import time
 import datetime
-from datetime import datetime
-import msvcrt 
+from datetime import datetime 
 
 # Constants
 TASK_FILE = "tasks.txt"
@@ -81,7 +80,6 @@ def main():
         print("2. View tasks     → view")
         print("3. Delete a task  → delete")
         print("4. Exit           → exit")
-        print("4. Show Time      → time")
 
         choice = input("\nWhat would you like to do? ").strip().lower()
         # Handle user choice
@@ -110,5 +108,6 @@ def main():
         else:
             print(" Invalid choice. Please type: add, view, delete, or exit.")
 # Run the main function
+## this part checks if the main function is running
 if __name__ == "__main__":
     main()
