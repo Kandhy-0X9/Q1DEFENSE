@@ -40,7 +40,7 @@ def view_tasks():
     if not tasks:
         print("\n No tasks available.")
     else:
-        print("\n Your tasks:")
+        print("\n Here are your tasks:")
         sorted_tasks = sorted(tasks, key=lambda x: x["timestamp"])
         for index, task in enumerate(sorted_tasks, start=1):
             print(f"{index}. {task['task']} (added: {task['timestamp']})")
@@ -67,7 +67,6 @@ def delete_task():
         print(" Please enter a valid number.")
 
 
-##################################################################################################
 # Main loop
 #this is what the user will see when they run the program
 def main():
