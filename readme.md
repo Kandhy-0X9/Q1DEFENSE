@@ -1,3 +1,25 @@
+# Main Pseudocode
+
+## Import modules
+    os
+    sys
+    time
+    date time
+
+## Make functions
+    Add
+    Remove
+    Save 
+    Load
+    View
+    exit
+
+## Main Program
+    main function
+        what the user will interact with
+            welcome the user
+            ask the user what he/she would like to do
+
 # Milestones
 ## Milestones week one
 ### Day 1
@@ -22,27 +44,3 @@
 
 ## milestones week two
 Finish the Q1 defense slides
-
-
-# Main Pseudocode
-
-## Import modules
-    os
-    sys
-    time
-    date time
-
-## Make functions
-    Add
-    Remove
-    Save 
-    Load
-    View
-    exit
-
-## Main Program
-    main function
-        what the user will interact with
-            welcome the user
-            ask the user what he/she would like to do
-
