@@ -1,21 +1,21 @@
 # Milestones
 ## Milestones week one
-Day 1
+### Day 1
     Brainstorm
     Pseudo Code
-Day 2
+### Day 2
     Work on the algorithm
         Add
         remove
-Day 3
+### Day 3
     Work on the algorithm
         Save
         load
-Day 4
+### Day 4
     Work on the algorithm
         View - because its the hardest
     Look for errors
-Day 5
+### Day 5
     improve the UX
     look for errors
     go through the code
@@ -23,7 +23,7 @@ Day 5
 ## milestones week two
 Finish the Q1 defense slides
 
-######
+
 # Main Pseudocode
 
 ## Import modules
