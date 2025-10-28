@@ -6,13 +6,14 @@ import datetime
 from datetime import datetime 
 
 # Constants
+#things i need  to store the tasks
 TASK_FILE = "tasks.txt"
 tasks = []
 
 # Load tasks from file
 def load_tasks():
-    if os.path.exists(TASK_FILE):
-        with open(TASK_FILE, "r") as file:
+    if os.path.exists(TASK_FILE): #checks if the file with what i need exists
+        with open(TASK_FILE, "r") as file: #opens the file and reads what is in side
             for line in file:
                 if line.strip():
                     timestamp, task = line.strip().split(" | ", 1)
@@ -20,15 +21,15 @@ def load_tasks():
 
 # Save tasks to file
 def save_tasks():
-    with open(TASK_FILE, "w") as file:
+    with open(TASK_FILE, "w") as file:#opens task file
         for task in tasks:
-            file.write(f"{task['timestamp']} | {task['task']}\n")
+            file.write(f"{task['timestamp']} | {task['task']}\n") #writes/ saves the tasks
 
 # Add a task
 def add_task():
     task_text = input("\nEnter the task you want to add: ").strip()
     if task_text:
-        timestamp = datetime.now().strftime("%Y-%m-%d , %H:%M")
+        timestamp = datetime.now().strftime("%Y-%m-%d , %H:%M")#formarts what time the usre input the task 
         tasks.append({"task": task_text, "timestamp": timestamp})
         print(f"\n Task '{task_text}' added successfully!\n")
         save_tasks()
