@@ -19,6 +19,7 @@
         what the user will interact with
             welcome the user
             ask the user what he/she would like to do
+            contains all the functions
 
 # Milestones
 ## Milestones week one
