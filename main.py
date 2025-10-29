@@ -6,7 +6,7 @@ import datetime
 from datetime import datetime 
 
 # Constants
-#things i need  to store the tasks
+#things i need to store the tasks
 TASK_FILE = "tasks.txt"
 tasks = []
 
